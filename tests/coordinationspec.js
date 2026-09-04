@@ -8,9 +8,10 @@ test('coordination order creation', async ({ page }) => {
     await page.goto('http://stage.manufacton.com');
     const login = new LoginPage(page);
     await login.login(testData.testdata.userName, testData.testdata.Password);
-    await page.waitForTimeout(3000);
     const coordPage = new CoordPage(page);
-    await coordPage.coord(testData.orderdata.orderName);
+    await coordPage.coord();
+    await coordPage.cordiate(testData.orderdata.orderName, testData.orderdata.day);
+    await coordPage.onsitedatefill(testData.orderdata.day);
 });
 
 
