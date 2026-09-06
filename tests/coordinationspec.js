@@ -1,17 +1,25 @@
-import { CoordPage } from '../Pages/coord.po';
-import testData from '../utils/testData';   
 import { test } from '@playwright/test';
-import LoginPage from '../Pages/LoginPage.po';
+import { CoordPage } from '../Pages/coord.po';  
+import testData from '../utils/testData';
+import { basicdetails } from '../utils/helpers';
+import { loginAsDefaultUser } from '../utils/loginhelper';
+
+let coordPage;
+let dateHelper;
+
+test.beforeEach(async ({ page }) => {
+    await loginAsDefaultUser(page);
+    await page.waitForTimeout(3000);
+    coordPage = new CoordPage(page);
+    dateHelper = new basicdetails(page);
+});
 
 
 test('coordination order creation', async ({ page }) => {
-    await page.goto('http://stage.manufacton.com');
-    const login = new LoginPage(page);
-    await login.login(testData.testdata.userName, testData.testdata.Password);
-    const coordPage = new CoordPage(page);
-    await coordPage.coord();
-    await coordPage.cordiate(testData.orderdata.orderName, testData.orderdata.day);
-    await coordPage.onsitedatefill(testData.orderdata.day);
+    await coordPage.coord(testData.orderdata.orderName);
+    await dateHelper.cordiate(testData.orderdata.day);
+    await dateHelper.onsitedate(testData.orderdata.day);
+    await coordPage.ordercreate();
 });
 
 
