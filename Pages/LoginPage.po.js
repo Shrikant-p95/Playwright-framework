@@ -1,4 +1,4 @@
-class LoginPage {
+export class LoginPage {
     constructor(page) {
         this.page = page;
         this.username = page.getByPlaceholder('Email Address');
@@ -6,7 +6,7 @@ class LoginPage {
         this.loginButton = page.getByRole('button', { name: 'Log In' });
     }
 
-    async login(userName, Password) {
+    async loginp(userName, Password) {
         await this.username.fill(userName);
         await this.page.waitForTimeout(3000);
         await this.password.fill(Password);
@@ -15,5 +15,3 @@ class LoginPage {
         await this.page.waitForTimeout(3000);
     }
 }
-
-export default LoginPage;

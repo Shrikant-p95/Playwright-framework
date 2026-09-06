@@ -28,12 +28,13 @@ export default defineConfig({
   use: {
     headless: false,
     viewport: null,
+    //baseURL: process.env.BASE_URL || 'https://stage.manufacton.com',
     launchOptions: {
       args: ['--start-maximized'],
+      
     },
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
-
+    //baseURL: process.env.BASE_URL || 'https://stage.manufacton.com',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
