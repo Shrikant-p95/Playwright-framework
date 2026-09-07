@@ -10,14 +10,18 @@ export class CoordPage {
     this.orderCreateButton = page.locator('button:has-text("Create Order")');
     
   }
-
-
   async coord(orderName) {
     await this.module.click();
     await this.cord.click();
     await this.plusbutton.click();
+    await this.page.waitForTimeout(3000);
     await this.ordername.fill(orderName);
-  } 
+  }
+
+  async coordp(orderName) {
+    await this.coord(orderName);
+  }
+
   async ordercreate(){
     await this.orderCreateButton.click();
   }

@@ -12,7 +12,7 @@ import { defineConfig, devices } from '@playwright/test';
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: './specs',
   testMatch: '**/coordinationspec.js',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -28,10 +28,10 @@ export default defineConfig({
   use: {
     headless: false,
     viewport: null,
+    screenshot: 'only-on-failure',
     //baseURL: process.env.BASE_URL || 'https://stage.manufacton.com',
     launchOptions: {
       args: ['--start-maximized'],
-      
     },
     /* Base URL to use in actions like `await page.goto('')`. */
     //baseURL: process.env.BASE_URL || 'https://stage.manufacton.com',
