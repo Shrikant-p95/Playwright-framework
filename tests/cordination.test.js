@@ -10,7 +10,6 @@ export default{
     const dateHelper = new basicdetails(page);
     await dateHelper.cordiate();
     await dateHelper.onsitedate();
-
     return coordPage;
   }
 }
