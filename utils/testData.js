@@ -7,7 +7,7 @@ class testdata {
 
 class orderdata {
     constructor() {
-        this.orderName = 'Test Order';
+        this.orderName = 'uniqueOrderName_' + Date.now();
     }
 }
 

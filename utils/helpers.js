@@ -5,21 +5,22 @@ export class basicdetails {
         this.onsite = page.locator('div.field:has-text("Onsite")').locator('.icon-datepicker');
     }
   async cordiate(day = new Date().getDate()) {
+    const dialog = this.page.getByRole('dialog');
     await this.codate.click();
-    const dayCell = this.page.getByRole('dialog').getByRole('button', {
-      name: String(day+1),
+    await dialog.getByRole('button', {
+      name: String(day + 1),
       exact: true,
-    });
-    await dayCell.click();
+    }).click();
+    await dialog.waitFor({ state: 'hidden' });
   }
 
   async onsitedate(day = new Date().getDate()) {
+    const dialog = this.page.getByRole('dialog');
     await this.onsite.click();
-    const dayCell = this.page.getByRole('dialog').getByRole('button', {
-      name: String(day+2),
+    await dialog.getByRole('button', {
+      name: String(day + 2),
       exact: true,
-    });
-    await dayCell.click();
-    await this.page.waitForTimeout(3000);
+    }).click();
+    await dialog.waitFor({ state: 'hidden' });
   }
 }

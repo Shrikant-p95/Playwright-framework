@@ -14,7 +14,7 @@ export class CoordPage {
     await this.module.click();
     await this.cord.click();
     await this.plusbutton.click();
-    await this.page.waitForTimeout(3000);
+    await this.ordername.waitFor({ state: 'visible' });
     await this.ordername.fill(orderName);
   }
 
@@ -23,7 +23,7 @@ export class CoordPage {
   }
 
   async ordercreate(){
-    await this.orderCreateButton.click();
+    await this.orderCreateButton.click(); // Wait for order creation to complete
   }
  
 };
