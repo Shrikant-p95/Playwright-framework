@@ -1,8 +1,6 @@
 import { CoordPage } from '../Pages/coord.po';
 import { basicdetails } from '../utils/helpers';
 
-
-
 export default{
  async abc (orderName, page) {
     const coordPage = new CoordPage(page);
@@ -10,6 +8,7 @@ export default{
     const dateHelper = new basicdetails(page);
     await dateHelper.cordiate();
     await dateHelper.onsitedate();
+    await coordPage.ordercreate();
     return coordPage;
   }
 }
